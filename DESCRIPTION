@@ -1,0 +1,20 @@
+Package: gprofiler2.addon
+Title: Addon of gprofiler2 package with complementary functionalities
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Gwenaëlle",
+           family = "Lemoine",
+           role = c("cre"),
+           email = "lemoine.gwenaelle@gmail.com",
+           comment = c(ORCID = "0000-0003-4747-1937"))
+Description: What the package does (one paragraph).
+Depends : R (>= 3.6)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
