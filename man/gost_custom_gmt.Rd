@@ -61,13 +61,12 @@ If 'multi_query' is selected, the result is a data frame for comparing multiple 
 just as in the web tool.
 }
 \examples{
-# Use GMT file with entrez gene IDs or download gmt file at
-software.broadinstitute.org/gsea/msigdb/download_file.jsp?filePath=/resources/msigdb/6.2/h.all.v6.2.symbols.gmt
-path_to_gmt <- "path to the gmt file or the downloaded one"
-gost_custom_gmt_res <- gost_custom_gmt(c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
-                                         "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
-                                         "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076"),
-                                         custom_gmt = path_to_gmt)
+path_to_gmt <- file.path(path.package("gprofiler2.addon"),
+                         "inst", "extdata", "h.all.v6.2.entrez.gmt")
+query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
+           "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
+           "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")
+gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
 
 }
 \author{
