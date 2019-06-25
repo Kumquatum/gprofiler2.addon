@@ -5,11 +5,12 @@ Authors@R:
     person(given = "Gwenaëlle",
            family = "Lemoine",
            role = c("cre"),
-           email = "lemoine.gwenaelle@gmail.com",
+           email = "gwenaelle.lemoine@pm.me",
            comment = c(ORCID = "0000-0003-4747-1937"))
-Description: What the package does (one paragraph).
-Depends : R (>= 3.6)
-License: MIT + file LICENSE
+Description: This small package is an addon to the original gprofiler2 package. 
+    It allows to use a custom gmt file for gost function (like in the web UI) and then aggregate it to a classic gost object.
+    Thus you can use gostplot as if it was an classic gost object.
+Depends: R (>= 3.6)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
