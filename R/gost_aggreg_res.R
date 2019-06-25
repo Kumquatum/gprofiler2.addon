@@ -1,6 +1,7 @@
 #' Aggregation of results from gost_standard and gost_custom_gmt
 #'
 #' Merging of the output from both \code{\link{gost_standard}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
+#' May also be used on an output from this function with another output from \code{\link{gost_custom_gmt}}
 #'
 #' @param standard_output output from \code{\link{gost_standard}}
 #' @param custom_output output from \code{\link{gost_custom_gmt}}
@@ -16,7 +17,7 @@
 #'
 #' @export
 
-gost_aggreg_res <- function(standard_output = NULL, custom_output = NULL){
+gost_aggreg_res <- function(standard_output = NULL, custom_output = NULL, check_content = TRUE){
   # Checking format
   lapply(list(standard_output, custom_output), function(output){
     # Checking first level of output structure
@@ -33,11 +34,41 @@ gost_aggreg_res <- function(standard_output = NULL, custom_output = NULL){
     })
   })
 
+  # Checking content is from same queries
+  if (check_content) {
+    meta_standard <- standard_output$meta
+    meta_custom <- custom_output$meta
+
+    lapply(names(meta_standard$query_metadata), function(name) {
+      if (!(name %in% c("organism", "sources"))) {
+        if (name == "queries") {
+          if (length(meta_standard$query_metadata$queries) != length(meta_custom$query_metadata$queries)) stop("Number of queries different.")
+          if (length(setdiff(meta_standard$query_metadata$queries, meta_custom$query_metadata$queries)) > 0) stop("Length of queries different.")
+          if (mapply(function(x,y){all(x == y)}, meta_standard$query_metadata$queries, meta_custom$query_metadata$queries)) {
+            warning("Different queries IDs. It may be due to different type of ID (Ensembl, Entrez, etc.). IDs from standard output will be kept.")
+          }
+        } else if (name == "numeric_ns") {
+          if (meta_standard$query_metadata$numeric_ns != meta_custom$query_metadata$numeric_ns)
+            warning("Different type of IDs. ", meta_standard$query_metadata$numeric_ns, " (standard) and ", meta_custom$query_metadata$numeric_ns, " (custom)")
+        } else {
+          # if (meta_standard$query_metadata[[name]] != meta_custom$query_metadata[[name]]) stop(paste0("Item ", name, " of query_metadata isn't identical"))
+          if (!all.equal(meta_standard$query_metadata[[name]], meta_custom$query_metadata[[name]])) stop(paste0("Item ", name, " of query_metadata isn't identical"))
+        }
+      }
+    })
+  }
+
+  # Merged meta based on standard output
+  meta_merged <- meta_standard
+  meta_merged$query_metadata$sources <- c(meta_merged$query_metadata$sources, meta_custom$query_metadata$sources)
+  meta_merged$result_metadata[[names(meta_custom$result_metadata[2])]] <- meta_custom$result_metadata[[2]]
+  meta_merged$result_metadata$timestamp <- strftime(Sys.time(), "%Y-%m-%dT%H:%M:%S%z", "GMT") # Note : not exactly the same format as the one from API
+
   # Aggregation
   merged_output <- list(
     result = rbind(standard_output$result, custom_output$result),
-    meta = "TODO"
-    # meta = rbind(standard_output$rmeta, custom_output$meta)
+    meta = meta_merged
   )
 
+  return(merged_output)
 }

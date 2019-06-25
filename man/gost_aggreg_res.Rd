@@ -4,7 +4,8 @@
 \alias{gost_aggreg_res}
 \title{Aggregation of results from gost_standard and gost_custom_gmt}
 \usage{
-gost_aggreg_res(standard_output = NULL, custom_output = NULL)
+gost_aggreg_res(standard_output = NULL, custom_output = NULL,
+  check_content = TRUE)
 }
 \arguments{
 \item{standard_output}{output from \code{\link{gost_standard}}}
@@ -21,6 +22,7 @@ A named list where 'result' contains data.frame with the enrichment analysis res
 }
 \description{
 Merging of the output from both \code{\link{gost_standard}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
+May also be used on an output from this function with another output from \code{\link{gost_custom_gmt}}
 }
 \examples{
 
