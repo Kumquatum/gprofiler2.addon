@@ -13,7 +13,7 @@ gost_custom_gmt(query, ordered_query = FALSE, multi_query = FALSE,
   numeric_ns = "", custom_gmt = NULL)
 }
 \arguments{
-\item{query}{vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link{gprofiler2::gconvert}} to get required IDs.
+\item{query}{vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link{gprofiler2:gconvert}} to get required IDs.
 family name. Example: human - 'hsapiens', mouse - 'mmusculus'.}
 
 \item{ordered_query}{in case input gene lists are ranked this option may be
@@ -53,6 +53,8 @@ A named list where 'result' contains data.frame with the enrichment analysis res
  When requesting a 'multi_query', either TRUE or FALSE, the columns of the resulting data frame differ.
  If 'evcodes' is set, the return value includes columns 'evidence_codes' and 'intersection'.
  The latter conveys info about the intersecting genes between the corresponding query and term.
+ \item{tet}{tii heghe oi multi_query', either TRUE or FALSE, the columns of the resulting data frame differmulti_query', either TRUE or FALSE, the columns of the resulting data frame differ}
+ \item{tetAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}{tii heghe oi multi_query', either TRUE or FALSE, the columns of the resulting}
 }
 \description{
 Interface to the g:Profiler tool g:GOSt for functional enrichment of a list of gene IDs based on a given GMT file.
