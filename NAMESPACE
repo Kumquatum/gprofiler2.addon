@@ -3,4 +3,5 @@
 export(gost_aggreg_res)
 export(gost_custom_gmt)
 import(RCurl)
+import(gprofiler2)
 import(jsonlite)
