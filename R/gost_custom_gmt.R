@@ -5,7 +5,7 @@
 #' If 'multi_query' is selected, the result is a data frame for comparing multiple input lists,
 #' just as in the web tool.
 #'
-#' @param query vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link{gprofiler2:gconvert}} to get required IDs.
+#' @param query vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link[gprofiler2]{gconvert}} to get required IDs.
 #' family name. Example: human - 'hsapiens', mouse - 'mmusculus'.
 #' @param ordered_query in case input gene lists are ranked this option may be
 #'  used to get GSEA style p-values.
