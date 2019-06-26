@@ -5,6 +5,7 @@
 #'
 #' @param standard_output output from \code{\link{gost_standard}}
 #' @param custom_output output from \code{\link{gost_custom_gmt}}
+#' @param check_content boolean specifying if content must be checked to be from same queries
 #' @return A named list where 'result' contains data.frame with the enrichment analysis results and 'meta' contains metadata needed for Manhattan plot. If the input
 #'  consisted of several lists the corresponding list is indicated with a variable
 #'  'query'.

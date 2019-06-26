@@ -53,8 +53,6 @@ A named list where 'result' contains data.frame with the enrichment analysis res
  When requesting a 'multi_query', either TRUE or FALSE, the columns of the resulting data frame differ.
  If 'evcodes' is set, the return value includes columns 'evidence_codes' and 'intersection'.
  The latter conveys info about the intersecting genes between the corresponding query and term.
- \item{tet}{tii heghe oi multi_query', either TRUE or FALSE, the columns of the resulting data frame differmulti_query', either TRUE or FALSE, the columns of the resulting data frame differ}
- \item{tetAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}{tii heghe oi multi_query', either TRUE or FALSE, the columns of the resulting}
 }
 \description{
 Interface to the g:Profiler tool g:GOSt for functional enrichment of a list of gene IDs based on a given GMT file.
@@ -63,13 +61,11 @@ If 'multi_query' is selected, the result is a data frame for comparing multiple 
 just as in the web tool.
 }
 \examples{
-path_to_gmt <- file.path(path.package("gprofiler2.addon"),
-                         "inst", "extdata", "h.all.v6.2.entrez.gmt")
+path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt", package = "gprofiler2.addon", mustWork = TRUE)
 query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
            "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
            "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")
 gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
-
 }
 \author{
 Gwenaëlle Lemoine <lemoine.gwenaelle@gmail.com>

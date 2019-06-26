@@ -10,12 +10,16 @@ Authors@R:
 Description: This small package is an addon to the original gprofiler2 package. 
     It allows to use a custom gmt file for gost function (like in the web UI) and then aggregate it to a classic gost object.
     Thus you can use gostplot as if it was an classic gost object.
+License: GPL (>= 2)
 Depends: R (>= 3.6)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat,
+    testthat (>= 2.1.0),
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
+Imports: 
+    jsonlite,
+    RCurl

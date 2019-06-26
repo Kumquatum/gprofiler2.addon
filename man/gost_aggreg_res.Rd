@@ -11,6 +11,8 @@ gost_aggreg_res(standard_output = NULL, custom_output = NULL,
 \item{standard_output}{output from \code{\link{gost_standard}}}
 
 \item{custom_output}{output from \code{\link{gost_custom_gmt}}}
+
+\item{check_content}{boolean specifying if content must be checked to be from same queries}
 }
 \value{
 A named list where 'result' contains data.frame with the enrichment analysis results and 'meta' contains metadata needed for Manhattan plot. If the input
