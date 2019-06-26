@@ -1,9 +1,9 @@
 #' Aggregation of results from gost_standard and gost_custom_gmt
 #'
-#' Merging of the output from both \code{\link{gost_standard}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
+#' Merging of the output from both \code{\link[gprofiler2]{gost}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
 #' May also be used on an output from this function with another output from \code{\link{gost_custom_gmt}}
 #'
-#' @param standard_output output from \code{\link{gost_standard}}
+#' @param standard_output output from \code{\link[gprofiler2]{gost}}
 #' @param custom_output output from \code{\link{gost_custom_gmt}}
 #' @param check_content boolean specifying if content must be checked to be from same queries
 #' @return A named list where 'result' contains data.frame with the enrichment analysis results and 'meta' contains metadata needed for Manhattan plot. If the input
@@ -14,7 +14,16 @@
 #'  The latter conveys info about the intersecting genes between the corresponding query and term.
 #' @author  Gwenaëlle Lemoine <lemoine.gwenaelle@@gmail.com>
 #' @examples
+#' path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt",
+#'                            package = "gprofiler2.addon", mustWork = TRUE)
+#' query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
+#'            "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
+#'            "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")
+#' gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
+#' gost_classic_res <- gprofiler2::gost(query, numeric_ns = "ENTREZGENE_ACC")
+#' gost_aggregated <- gost_aggreg_res(gost_classic_res, gost_custom_gmt_res)
 #'
+#' @import gprofiler2
 #'
 #' @export
 
