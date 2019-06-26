@@ -13,7 +13,7 @@ gost_custom_gmt(query, ordered_query = FALSE, multi_query = FALSE,
   numeric_ns = "", custom_gmt = NULL)
 }
 \arguments{
-\item{query}{vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link{gprofiler2:gconvert}} to get required IDs.
+\item{query}{vector that can consist of IDs of the same type as those inside gmt file; or a (named) list of such vectors. If not, use \code{\link[gprofiler2]{gconvert}} to get required IDs.
 family name. Example: human - 'hsapiens', mouse - 'mmusculus'.}
 
 \item{ordered_query}{in case input gene lists are ranked this option may be
@@ -61,7 +61,8 @@ If 'multi_query' is selected, the result is a data frame for comparing multiple 
 just as in the web tool.
 }
 \examples{
-path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt", package = "gprofiler2.addon", mustWork = TRUE)
+path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt",
+                           package = "gprofiler2.addon", mustWork = TRUE)
 query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
            "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
            "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")

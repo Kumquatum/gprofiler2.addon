@@ -8,7 +8,7 @@ gost_aggreg_res(standard_output = NULL, custom_output = NULL,
   check_content = TRUE)
 }
 \arguments{
-\item{standard_output}{output from \code{\link{gost_standard}}}
+\item{standard_output}{output from \code{\link[gprofiler2]{gost}}}
 
 \item{custom_output}{output from \code{\link{gost_custom_gmt}}}
 
@@ -23,11 +23,18 @@ A named list where 'result' contains data.frame with the enrichment analysis res
  The latter conveys info about the intersecting genes between the corresponding query and term.
 }
 \description{
-Merging of the output from both \code{\link{gost_standard}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
+Merging of the output from both \code{\link[gprofiler2]{gost}} and \code{\link{gost_custom_gmt}} on the same query or list of queries
 May also be used on an output from this function with another output from \code{\link{gost_custom_gmt}}
 }
 \examples{
-
+path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt",
+                           package = "gprofiler2.addon", mustWork = TRUE)
+query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
+           "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
+           "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")
+gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
+gost_classic_res <- gprofiler2::gost(query, numeric_ns = "ENTREZGENE_ACC")
+gost_aggregated <- gost_aggreg_res(gost_classic_res, gost_custom_gmt_res)
 
 }
 \author{
