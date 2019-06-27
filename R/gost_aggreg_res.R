@@ -62,7 +62,7 @@ gost_aggreg_res <- function(standard_output = NULL, custom_output = NULL, check_
             warning("Different type of IDs. ", meta_standard$query_metadata$numeric_ns, " (standard) and ", meta_custom$query_metadata$numeric_ns, " (custom)")
         } else {
           # if (meta_standard$query_metadata[[name]] != meta_custom$query_metadata[[name]]) stop(paste0("Item ", name, " of query_metadata isn't identical"))
-          if (!all.equal(meta_standard$query_metadata[[name]], meta_custom$query_metadata[[name]])) stop(paste0("Item ", name, " of query_metadata isn't identical"))
+          if (!identical(meta_standard$query_metadata[[name]], meta_custom$query_metadata[[name]])) stop(paste0("Item ", name, " of query_metadata isn't identical"))
         }
       }
     })

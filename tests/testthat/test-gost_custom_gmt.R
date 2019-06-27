@@ -30,10 +30,10 @@ test_that("Output conform", {
 
 
 test_that("Exemple works as before", {
-  expect_true(all.equal(gost_custom_gmt_res$result, gost_custom_gmt_res_ref$result))
+  expect_true(identical(gost_custom_gmt_res$result, gost_custom_gmt_res_ref$result))
   # organism (which is in fact the token returned by the API) and timestamp should be the only ones changing in meta
-  expect_true(all.equal(gost_custom_gmt_res$meta$query_metadata[names(gost_custom_gmt_res$meta$query_metadata) != "organism"],
+  expect_true(identical(gost_custom_gmt_res$meta$query_metadata[names(gost_custom_gmt_res$meta$query_metadata) != "organism"],
                         gost_custom_gmt_res_ref$meta$query_metadata[names(gost_custom_gmt_res$meta$query_metadata) != "organism"]))
-  expect_true(all.equal(gost_custom_gmt_res$meta$result_metadata[names(gost_custom_gmt_res$meta$result_metadata) != "timestamp"],
+  expect_true(identical(gost_custom_gmt_res$meta$result_metadata[names(gost_custom_gmt_res$meta$result_metadata) != "timestamp"],
                         gost_custom_gmt_res_ref$meta$result_metadata[names(gost_custom_gmt_res$meta$result_metadata) != "timestamp"]))
 })
