@@ -13,8 +13,8 @@ test_that("GMT file checked correctly", {
   expect_error(gost_custom_gmt(query = letters[1:5], custom_gmt = "/fakepath/forunittest/fakeGMT.gmt"), "GMT file path must exist")
   expect_error(gost_custom_gmt(query = letters[1:5], custom_gmt = system.file("DESCRIPTION", package = "gprofiler2.addon",
                                                                               mustWork = TRUE)), "File extension isn't GMT")
-  expect_null(gost_custom_gmt(query = letters[1:5], custom_gmt = system.file("extdata", "h.all.v6.2.entrez.gmt", package = "gprofiler2.addon",
-                                                                              mustWork = TRUE)))
+  expect_error(gost_custom_gmt(query = letters[1:5], custom_gmt = system.file("extdata", "h.all.v6.2.entrez.gmt", package = "gprofiler2.addon",
+                                                                              mustWork = TRUE)), NA)
 })
 
 
