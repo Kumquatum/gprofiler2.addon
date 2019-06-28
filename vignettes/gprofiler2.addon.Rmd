@@ -1,0 +1,58 @@
+---
+title: "gprofiler2.addon : quick guide"
+output: rmarkdown::html_vignette
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: "Gwenaëlle Lemoine"
+vignette: >
+  %\VignetteIndexEntry{quick-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+*gprofiler2.addon is a small package to add functionnalities to [gprofiler2](https://github.com/cran/gprofiler2)*
+
+__________________
+
+Suppose we want to use a gmt file which isn't available into `gprofiler2::gost`, for exemple those from [MSigDB](http://software.broadinstitute.org/gsea/msigdb/collections.jsp).
+The `h.all.v6.2.entrez.gmt` is available into the addon :
+
+```{r gmt_detail, message = FALSE}
+library(gprofiler2.addon)
+path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt", package = "gprofiler2.addon", mustWork = TRUE)
+gmt <- gprofiler2.addon::format_gmt(path_to_gmt)
+```
+**GMT content example**
+`r knitr::kable(data.frame(Term = names(gmt[c(6,11)]), IDs = paste0(gmt[c(6,11)], sep=", ")))`
+
+## Using gost with custom gmt
+```{r gost_custom}
+query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
+          "23210", "2131", "2152", "5165", "55139", "7360", "229", "8614",
+          "54206", "2027", "10957", "3162", "5228", "26330", "9435", "55076")
+gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
+```
+**Result table** (subset of columns)
+`r knitr::kable(gost_custom_gmt_res$result[,c("p_value", "term_id", "source", "term_name", "parents")])`
+
+## Aggregating results 
+One could also want to merge results from custom gmt with classic gost
+```{r gost_aggreg, message = FALSE}
+gost_classic_res <- gprofiler2::gost(query, numeric_ns = "ENTREZGENE_ACC")
+aggreg_res <- gost_aggreg_res(gost_classic_res, gost_custom_gmt_res)
+```
+**Result table** (subset of columns)
+`r knitr::kable(aggreg_res$result[,c("p_value", "term_id", "source", "term_name", "parents")])`
+
+## Plotting together
+Aggregated results can be plot together with `gprofiler2::gostplot` since `gprofiler2::gost_aggreg_res` output respect the same format.
+```{r gostplot, fig.width=7, fig.height=5}
+gprofiler2::gostplot(aggreg_res)
+```
+
