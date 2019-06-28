@@ -69,5 +69,5 @@ query <- c("26118", "5837", "6781", "23036", "694", "123", "1466", "7436",
 gost_custom_gmt_res <- gost_custom_gmt(query, custom_gmt = path_to_gmt)
 }
 \author{
-Gwenaëlle Lemoine <lemoine.gwenaelle@gmail.com>
+Based on information given by Uku Raudvere <uku.raudvere@ut.ee>, author with Liis Kolberg <liis.kolberg@ut.ee> of the \pkg{gprofiler2} package
 }

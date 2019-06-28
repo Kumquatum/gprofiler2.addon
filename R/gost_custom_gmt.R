@@ -31,7 +31,7 @@
 #'  When requesting a 'multi_query', either TRUE or FALSE, the columns of the resulting data frame differ.
 #'  If 'evcodes' is set, the return value includes columns 'evidence_codes' and 'intersection'.
 #'  The latter conveys info about the intersecting genes between the corresponding query and term.
-#' @author  Gwenaëlle Lemoine <lemoine.gwenaelle@@gmail.com>
+#' @author  Based on information given by Uku Raudvere <uku.raudvere@ut.ee>, author with Liis Kolberg <liis.kolberg@ut.ee> of the \pkg{gprofiler2} package
 #' @examples
 #' path_to_gmt <- system.file("extdata", "h.all.v6.2.entrez.gmt",
 #'                            package = "gprofiler2.addon", mustWork = TRUE)
